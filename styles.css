@@ -1,0 +1,1036 @@
+/* ==========================================================================
+   專業網站樣式表
+   設計理念：簡潔、專業、乾淨、有呼吸感
+   ========================================================================== */
+
+/* CSS 變數定義 - 色彩系統 */
+:root {
+  /* 主色系 - 更現代的深藍色調 */
+  --primary-color: #1E40AF;
+  --primary-light: #3B82F6;
+  --primary-dark: #1E3A8A;
+  --primary-alpha: rgba(30, 64, 175, 0.1);
+
+  /* 輔助色系 - 清新的背景色 */
+  --background-primary: #FAFBFF;
+  --background-secondary: #F1F5F9;
+  --background-white: #FFFFFF;
+
+  /* 強調色系 - 溫暖的橙金色 */
+  --accent-color: #F59E0B;
+  --accent-light: #FBBF24;
+  --accent-dark: #D97706;
+
+  /* 文字色彩 */
+  --text-primary: #2D3748;
+  --text-secondary: #4A5568;
+  --text-muted: #718096;
+  --text-light: #A0AEC0;
+
+  /* 邊框與分隔線 */
+  --border-color: #E2E8F0;
+  --border-light: #F1F5F9;
+
+  /* 陰影系統 */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  /* 間距系統 - 創造呼吸感 */
+  --space-xs: 0.5rem;   /* 8px */
+  --space-sm: 0.75rem;  /* 12px */
+  --space-md: 1rem;     /* 16px */
+  --space-lg: 1.5rem;   /* 24px */
+  --space-xl: 2rem;     /* 32px */
+  --space-2xl: 3rem;    /* 48px */
+  --space-3xl: 4rem;    /* 64px */
+  --space-4xl: 6rem;    /* 96px */
+
+  /* 圓角系統 */
+  --radius-sm: 0.25rem; /* 4px */
+  --radius-md: 0.5rem;  /* 8px */
+  --radius-lg: 0.75rem; /* 12px */
+  --radius-xl: 1rem;    /* 16px */
+
+  /* 轉場動畫 */
+  --transition-fast: 0.15s ease-in-out;
+  --transition-normal: 0.3s ease-in-out;
+  --transition-slow: 0.5s ease-in-out;
+}
+
+/* ==========================================================================
+   基礎重置與字體設定
+   ========================================================================== */
+
+/* 引入 Noto Sans TC 字體 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap');
+
+/* 基礎重置 */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background-color: var(--background-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================================
+   排版系統 - Typography
+   ========================================================================== */
+
+/* 標題系統 - 使用粗體營造專業感 */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-primary);
+  margin-bottom: var(--space-md);
+}
+
+h1 {
+  font-size: 2.5rem;   /* 40px */
+  font-weight: 900;
+  margin-bottom: var(--space-lg);
+  letter-spacing: -0.025em;
+}
+
+h2 {
+  font-size: 2rem;     /* 32px */
+  margin-bottom: var(--space-lg);
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  font-size: 1.5rem;   /* 24px */
+  margin-bottom: var(--space-md);
+}
+
+h4 {
+  font-size: 1.25rem;  /* 20px */
+  margin-bottom: var(--space-md);
+}
+
+h5 {
+  font-size: 1.125rem; /* 18px */
+  margin-bottom: var(--space-sm);
+}
+
+h6 {
+  font-size: 1rem;     /* 16px */
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+/* 段落與內文 */
+p {
+  margin-bottom: var(--space-md);
+  color: var(--text-secondary);
+  max-width: 65ch; /* 優化閱讀寬度 */
+}
+
+/* 強調文字 */
+strong, b {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+em, i {
+  font-style: italic;
+}
+
+/* 小字與輔助文字 */
+small {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   連結系統
+   ========================================================================== */
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  border-bottom: 1px solid transparent;
+}
+
+a:hover {
+  color: var(--primary-light);
+  border-bottom-color: var(--primary-light);
+}
+
+a:focus {
+  outline: 2px solid var(--primary-alpha);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ==========================================================================
+   按鈕系統
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-sm) var(--space-lg);
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  white-space: nowrap;
+  user-select: none;
+  min-height: 44px; /* 確保觸控友好 */
+}
+
+/* 主要按鈕 */
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-light);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+/* 強調按鈕 */
+.btn-accent {
+  background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-light) 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+  border: none;
+  font-weight: 600;
+}
+
+.btn-accent:hover {
+  background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent-color) 100%);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+  transform: translateY(-2px);
+}
+
+/* 次要按鈕 */
+.btn-secondary {
+  background-color: var(--background-white);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+  background-color: var(--background-secondary);
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-sm);
+}
+
+/* 大尺寸按鈕 */
+.btn-lg {
+  padding: var(--space-md) var(--space-xl);
+  font-size: 1.125rem;
+  min-height: 52px;
+}
+
+/* 小尺寸按鈕 */
+.btn-sm {
+  padding: var(--space-xs) var(--space-md);
+  font-size: 0.875rem;
+  min-height: 36px;
+}
+
+/* ==========================================================================
+   佈局系統 - 創造呼吸感
+   ========================================================================== */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.container-sm {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.container-lg {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+/* 區塊間距 */
+.section {
+  padding: var(--space-4xl) 0;
+}
+
+.section-sm {
+  padding: var(--space-2xl) 0;
+}
+
+.section-lg {
+  padding: var(--space-4xl) 0 var(--space-4xl) 0;
+}
+
+/* 網格系統 */
+.grid {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.grid-4 {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* Flexbox 工具類 */
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+/* ==========================================================================
+   卡片與內容區塊
+   ========================================================================== */
+
+.card {
+  background-color: var(--background-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-light);
+  transition: all var(--transition-normal);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.card-header {
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.card-body {
+  margin-bottom: var(--space-lg);
+}
+
+.card-footer {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--border-light);
+}
+
+/* ==========================================================================
+   導航系統
+   ========================================================================== */
+
+.navbar {
+  background-color: var(--background-white);
+  border-bottom: 1px solid var(--border-color);
+  padding: var(--space-md) 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+
+.nav-link {
+  padding: var(--space-sm) var(--space-md);
+  color: var(--text-secondary);
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.nav-link:hover {
+  color: var(--primary-color);
+  background-color: var(--primary-alpha);
+  border-bottom: none;
+}
+
+.nav-link.active {
+  color: var(--primary-color);
+  background-color: var(--primary-alpha);
+}
+
+/* Logo 樣式 */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.logo-image {
+  height: 40px;
+  width: auto;
+  transition: transform var(--transition-normal);
+}
+
+.logo-image:hover {
+  transform: scale(1.05);
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   圖片系統 - 支援象徵性圖像
+   ========================================================================== */
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+}
+
+.img-rounded {
+  border-radius: var(--radius-xl);
+}
+
+.img-circle {
+  border-radius: 50%;
+}
+
+/* 個人頭像樣式 */
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--background-white);
+  box-shadow: var(--shadow-lg);
+}
+
+.avatar-lg {
+  width: 200px;
+  height: 200px;
+}
+
+.avatar-sm {
+  width: 60px;
+  height: 60px;
+}
+
+/* 象徵性圖像容器 */
+.hero-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.hero-image:hover img {
+  transform: scale(1.05);
+}
+
+/* ==========================================================================
+   工具類別
+   ========================================================================== */
+
+/* 文字對齊 */
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+/* 文字顏色 */
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted { color: var(--text-muted); }
+.text-accent { color: var(--accent-color); }
+
+/* 背景顏色 */
+.bg-white { background-color: var(--background-white); }
+.bg-primary { background-color: var(--background-primary); }
+.bg-secondary { background-color: var(--background-secondary); }
+
+/* 間距工具 */
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: var(--space-xs); }
+.mt-2 { margin-top: var(--space-sm); }
+.mt-3 { margin-top: var(--space-md); }
+.mt-4 { margin-top: var(--space-lg); }
+.mt-5 { margin-top: var(--space-xl); }
+.mt-6 { margin-top: var(--space-2xl); }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: var(--space-xs); }
+.mb-2 { margin-bottom: var(--space-sm); }
+.mb-3 { margin-bottom: var(--space-md); }
+.mb-4 { margin-bottom: var(--space-lg); }
+.mb-5 { margin-bottom: var(--space-xl); }
+.mb-6 { margin-bottom: var(--space-2xl); }
+
+/* ==========================================================================
+   響應式設計
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  :root {
+    --space-4xl: 3rem; /* 減少大屏間距 */
+  }
+  
+  .container {
+    padding: 0 var(--space-md);
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+  }
+  
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+  
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .flex-between {
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  
+  .logo-text {
+    font-size: 1.25rem;
+  }
+  
+  .logo-image {
+    height: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: var(--space-lg);
+  }
+  
+  .section {
+    padding: var(--space-2xl) 0;
+  }
+}
+
+/* ==========================================================================
+   動畫與互動效果 - 保持簡潔
+   ========================================================================== */
+
+/* 淡入動畫 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* 焦點可見性 */
+*:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* 選取文字顏色 */
+::selection {
+  background-color: var(--primary-alpha);
+  color: var(--primary-dark);
+}
+
+/* ==========================================================================
+   電子報行銷頁專用樣式
+   ========================================================================== */
+
+/* 英雄區塊樣式 */
+.hero-section {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 50%, var(--primary-dark) 100%);
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="%23ffffff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23ffffff" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="200" r="150" fill="url(%23a)"/><circle cx="800" cy="300" r="100" fill="url(%23a)"/><circle cx="400" cy="700" r="120" fill="url(%23a)"/></svg>') no-repeat center center;
+  background-size: cover;
+  opacity: 0.1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 900;
+  margin-bottom: var(--space-lg);
+  line-height: 1.1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  margin-bottom: var(--space-3xl);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.95;
+}
+
+/* 訂閱表單樣式 */
+.subscription-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-inline {
+  display: flex;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.form-group {
+  display: flex;
+  gap: var(--space-md);
+  width: 100%;
+}
+
+.form-group input[type="email"] {
+  flex: 1;
+  padding: var(--space-md) var(--space-lg);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 1.125rem;
+  background-color: var(--background-white);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+}
+
+.form-group input[type="email"]:focus {
+  outline: none;
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.form-note {
+  font-size: 0.875rem;
+  opacity: 0.8;
+  text-align: center;
+}
+
+.form-note i {
+  margin-right: var(--space-xs);
+  color: var(--accent-color);
+}
+
+/* 關於我區塊 */
+.about-section {
+  padding: var(--space-4xl) 0;
+}
+
+.about-grid {
+  align-items: center;
+  gap: var(--space-3xl);
+}
+
+.avatar-container {
+  text-align: center;
+  position: relative;
+}
+
+.avatar-container::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+  border-radius: 50%;
+  opacity: 0.1;
+  z-index: -1;
+}
+
+.credentials {
+  display: flex;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+.credential-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-md);
+  background: linear-gradient(135deg, var(--primary-alpha) 0%, rgba(245, 158, 11, 0.1) 100%);
+  color: var(--primary-color);
+  border-radius: var(--radius-lg);
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.credential-badge i {
+  color: var(--accent-color);
+}
+
+/* 效益區塊 */
+.benefits-section {
+  padding: var(--space-4xl) 0;
+  background: linear-gradient(180deg, var(--background-secondary) 0%, var(--background-primary) 100%);
+}
+
+.benefits-grid {
+  gap: var(--space-2xl);
+}
+
+.benefit-card {
+  padding: var(--space-2xl);
+  text-align: center;
+  transition: all var(--transition-normal);
+  border: 2px solid transparent;
+  background: var(--background-white);
+  box-shadow: var(--shadow-md);
+}
+
+.benefit-card:hover {
+  border-color: var(--accent-color);
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+}
+
+.benefit-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto var(--space-lg);
+  background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-light) 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);
+}
+
+.benefit-icon i {
+  font-size: 2rem;
+  color: white;
+}
+
+.benefit-card h3 {
+  color: var(--primary-color);
+  margin-bottom: var(--space-md);
+  font-weight: 700;
+}
+
+/* 見證區塊 */
+.testimonial-section {
+  padding: var(--space-4xl) 0;
+  background: var(--background-white);
+}
+
+.testimonial-grid {
+  gap: var(--space-2xl);
+}
+
+.testimonial-card {
+  padding: var(--space-2xl);
+  position: relative;
+  border-left: 4px solid var(--accent-color);
+  background: linear-gradient(135deg, var(--background-white) 0%, var(--background-primary) 100%);
+  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-lg);
+}
+
+.testimonial-card::before {
+  content: '"';
+  position: absolute;
+  top: var(--space-md);
+  left: var(--space-md);
+  font-size: 4rem;
+  color: var(--accent-color);
+  opacity: 0.2;
+  font-family: serif;
+  line-height: 1;
+}
+
+.testimonial-text {
+  font-size: 1.125rem;
+  font-style: italic;
+  margin-bottom: var(--space-lg);
+  position: relative;
+  z-index: 2;
+}
+
+.author-info h4 {
+  margin-bottom: var(--space-xs);
+  color: var(--primary-color);
+}
+
+/* 服務客戶形象照樣式 */
+.service-image-container {
+  text-align: center;
+  margin: var(--space-3xl) auto;
+  max-width: 600px;
+}
+
+.service-image {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  transition: all var(--transition-normal);
+}
+
+.service-image:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+.service-image-caption {
+  margin-top: var(--space-md);
+  font-style: italic;
+}
+
+.section-subtitle {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-2xl);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 最終 CTA 區塊 */
+.final-cta-section {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 30%, var(--primary-dark) 100%);
+  color: white;
+  padding: var(--space-4xl) 0;
+  position: relative;
+}
+
+.final-cta-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="b" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="%23FBBF24" stop-opacity="0.15"/><stop offset="100%" stop-color="%23F59E0B" stop-opacity="0"/></radialGradient></defs><circle cx="150" cy="150" r="100" fill="url(%23b)"/><circle cx="850" cy="200" r="80" fill="url(%23b)"/><circle cx="300" cy="800" r="120" fill="url(%23b)"/></svg>') no-repeat center center;
+  background-size: cover;
+  opacity: 0.3;
+}
+
+.cta-title {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-lg);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 2;
+}
+
+.cta-subtitle {
+  font-size: 1.25rem;
+  margin-bottom: var(--space-3xl);
+  opacity: 0.95;
+  position: relative;
+  z-index: 2;
+}
+
+/* 頁尾樣式 */
+.footer {
+  background-color: var(--text-primary);
+  color: white;
+  padding: var(--space-2xl) 0;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  align-items: center;
+}
+
+.footer-main h4 {
+  color: var(--accent-color);
+  margin-bottom: var(--space-sm);
+}
+
+.footer-contact a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+.footer-contact a:hover {
+  color: var(--accent-light);
+}
+
+.footer-copyright {
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  opacity: 0.7;
+}
+
+/* 響應式調整 */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.125rem;
+  }
+  
+  .form-inline {
+    flex-direction: column;
+  }
+  
+  .form-group {
+    flex-direction: column;
+  }
+  
+  .about-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .credentials {
+    justify-content: center;
+  }
+  
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .cta-title {
+    font-size: 2rem;
+  }
+  
+  .service-image {
+    max-width: 100%;
+    border-radius: var(--radius-md);
+  }
+  
+  .service-image-container {
+    margin: var(--space-2xl) auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .benefit-icon {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .benefit-icon i {
+    font-size: 1.5rem;
+  }
+}
+
+/* ==========================================================================
+   列印樣式
+   ========================================================================== */
+
+@media print {
+  * {
+    box-shadow: none !important;
+  }
+  
+  body {
+    background: white;
+    color: black;
+  }
+  
+  .btn {
+    border: 1px solid black;
+  }
+}
